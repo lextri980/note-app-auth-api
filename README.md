@@ -1,4 +1,4 @@
-# Note App API Auth
+# Note App Auth API
 
 ### Abstract
 This is API of Note App
