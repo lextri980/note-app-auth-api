@@ -16,5 +16,5 @@ Before you continue, ensure you meet the following requirements:
 
 ### Technologies
 - Framework: `ExpressJS`
-- Database: `MongoDB` `Mongoose`
-- Auth: `Jsonwebtoken`
+- Database: `mongoDB` `mongoose`
+- Auth: `jsonwebtoken`
