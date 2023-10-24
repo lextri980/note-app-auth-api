@@ -6,7 +6,7 @@ const verifyToken = require("../middlewares/protectedRoute");
 // @route GET /note ------------------------------
 // @desc Read note
 // @access Private
-router.get("/", verifyToken, async (req, res) => {
+router.get("/list", verifyToken, async (req, res) => {
   try {
     const notes = await Note.find({ user: req.userId }).populate("user", [
       "username",
@@ -28,7 +28,7 @@ router.get("/", verifyToken, async (req, res) => {
 // @route POST /note ------------------------------
 // @desc Create note
 // @access Private
-router.post("/", verifyToken, async (req, res) => {
+router.post("/create", verifyToken, async (req, res) => {
   const { title, content, status } = req.body;
   //Validation
   if (!title || !content || !status) {
@@ -64,7 +64,7 @@ router.post("/", verifyToken, async (req, res) => {
 // @route PUT /note ------------------------------
 // @desc Update note
 // @access Private
-router.put("/:id", verifyToken, async (req, res) => {
+router.put("/update/:id", verifyToken, async (req, res) => {
   const { title, content, status } = req.body;
   //Validation
   if (!title || !content || !status) {
@@ -102,7 +102,7 @@ router.put("/:id", verifyToken, async (req, res) => {
 // @route DELETE /note ------------------------------
 // @desc Delete note
 // @access Private
-router.delete("/:id", verifyToken, async (req, res) => {
+router.delete("/delete/:id", verifyToken, async (req, res) => {
   try {
     const deleteCondition = { _id: req.params.id, user: req.userId };
 

@@ -6,7 +6,7 @@ const verifyToken = require("../middlewares/protectedRoute");
 // @route GET /linkcard ------------------------------
 // @desc Read link card
 // @access Private
-router.get("/", verifyToken, async (req, res) => {
+router.get("/list", verifyToken, async (req, res) => {
   try {
     const linkcards = await LinkCard.find({ user: req.userId }).populate(
       "user",
@@ -28,7 +28,7 @@ router.get("/", verifyToken, async (req, res) => {
 // @route POST /linkcard ------------------------------
 // @desc Create link card
 // @access Private
-router.post("/", verifyToken, async (req, res) => {
+router.post("/create", verifyToken, async (req, res) => {
   const { title, url, status } = req.body;
   //Validation
   if (!title) {
@@ -63,7 +63,7 @@ router.post("/", verifyToken, async (req, res) => {
 // @route PUT /linkcard ------------------------------
 // @desc Update link card
 // @access Private
-router.put("/:id", verifyToken, async (req, res) => {
+router.put("/update/:id", verifyToken, async (req, res) => {
   const { title, url, status } = req.body;
   //Validation
   if (!title) {
@@ -104,7 +104,7 @@ router.put("/:id", verifyToken, async (req, res) => {
 // @route DELETE /linkcard ------------------------------
 // @desc Delete link card
 // @access Private
-router.delete("/:id", verifyToken, async (req, res) => {
+router.delete("/delete/:id", verifyToken, async (req, res) => {
   try {
     const deleteCondition = {
       _id: req.params.id,
