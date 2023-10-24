@@ -6,7 +6,7 @@ const verifyToken = require("../middlewares/protectedRoute");
 // @route PUT /profile ------------------------------
 // @desc Update profile
 // @access Private
-router.put("/:id", verifyToken, async (req, res) => {
+router.put("/update/:id", verifyToken, async (req, res) => {
   const { username, name, password } = req.body;
 
   if (!username || !name || !password) {
