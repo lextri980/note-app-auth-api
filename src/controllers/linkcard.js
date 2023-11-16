@@ -25,6 +25,28 @@ router.get("/list", verifyToken, async (req, res) => {
   }
 });
 
+// @route GET /note ------------------------------
+// @desc Read one note
+// @access Private
+router.get("/detail/:id", verifyToken, async (req, res) => {
+  try {
+    const note = await LinkCard.findOne({ user: req.userId, _id: req.params.id }).populate("user", [
+      "username",
+      "name",
+    ]);
+    return res.status(200).json({
+      success: true,
+      note,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      success: false,
+      message: "Internal server error",
+    });
+  }
+});
+
 // @route POST /linkcard ------------------------------
 // @desc Create link card
 // @access Private
