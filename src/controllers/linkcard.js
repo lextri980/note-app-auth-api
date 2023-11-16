@@ -25,18 +25,18 @@ router.get("/list", verifyToken, async (req, res) => {
   }
 });
 
-// @route GET /note ------------------------------
-// @desc Read one note
+// @route GET /linkcard ------------------------------
+// @desc Read one linkcard
 // @access Private
 router.get("/detail/:id", verifyToken, async (req, res) => {
   try {
-    const note = await LinkCard.findOne({ user: req.userId, _id: req.params.id }).populate("user", [
+    const linkcard = await LinkCard.findOne({ user: req.userId, _id: req.params.id }).populate("user", [
       "username",
       "name",
     ]);
     return res.status(200).json({
       success: true,
-      note,
+      linkcard,
     });
   } catch (error) {
     console.log(error);
