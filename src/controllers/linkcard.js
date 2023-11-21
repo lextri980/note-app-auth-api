@@ -62,7 +62,7 @@ router.post("/create", verifyToken, async (req, res) => {
   try {
     const newLinkCard = new LinkCard({
       title,
-      url: url.startsWith("http://") ? url : `http://${url}`,
+      url: url.startsWith("http://") || url.startsWith("https://") ? url : `http://${url}`,
       status: status || "TO LEARN",
       user: req.userId,
     });
@@ -97,7 +97,7 @@ router.put("/update/:id", verifyToken, async (req, res) => {
   try {
     let updateLinkCard = {
       title,
-      url: (url.startsWith("http://") ? url : `http://${url}`) || "",
+      url: (url.startsWith("http://") || url.startsWith("https://") ? url : `http://${url}`) || "",
       status: status || "TO LEARN",
     };
 
