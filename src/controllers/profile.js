@@ -29,7 +29,7 @@ router.put("/update/:id", verifyToken, async (req, res) => {
       updateCondition,
       updateProfile,
       { new: true }
-    );
+    ).select('-password');
 
     return res.status(201).json({
       success: true,
