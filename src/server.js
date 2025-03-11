@@ -4,7 +4,7 @@ const cors = require('cors')
 const route = require('./controllers/ROUTES')
 const db = require('./config/connectDB')
 require('dotenv').config()
-const port = 5050
+const port = 9090
 
 //Connect to database
 db.connect()
